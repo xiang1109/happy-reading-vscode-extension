@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="支持 Happy Read book 持续开发。">
+  <meta name="theme-color" content="#101612">
+  <title>支持 Happy Read book</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d120f;
+      --panel: #151c18;
+      --panel-2: #1b241f;
+      --line: rgba(255,255,255,.1);
+      --text: #f4f7f5;
+      --muted: #a8b3ac;
+      --green: #07c160;
+      --gold: #ffc86a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -20%, rgba(7,193,96,.25), transparent 38%),
+        radial-gradient(circle at 95% 80%, rgba(255,200,106,.08), transparent 28%),
+        var(--bg);
+      font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+    }
+
+    main {
+      width: min(940px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0 48px;
+    }
+
+    header { text-align: center; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(7,193,96,.34);
+      border-radius: 999px;
+      color: #8af0b8;
+      background: rgba(7,193,96,.08);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 42px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(27,36,31,.96), rgba(19,26,22,.96));
+      box-shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+
+    .qr-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .qr-frame {
+      overflow: hidden;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 12px 36px rgba(0,0,0,.26);
+    }
+
+    .qr-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .qr-tip {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .tiers { padding: 28px; }
+
+    .tiers h2 {
+      margin: 0 0 20px;
+      font-size: 22px;
+    }
+
+    .tier-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .tier {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 18px;
+      align-items: center;
+      min-height: 86px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .tier.featured {
+      border-color: rgba(7,193,96,.42);
+      background: rgba(7,193,96,.07);
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 25px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tier strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .tier span:last-child {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .thanks {
+      margin: 22px 0 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    footer {
+      margin-top: 34px;
+      color: #79847d;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px) {
+      main { padding-top: 38px; }
+      .layout { grid-template-columns: 1fr; }
+      .qr-card, .tiers { padding: 18px; }
+      .tier { grid-template-columns: 68px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="badge">HAPPY READ BOOK</div>
+      <h1>支持持续开发</h1>
+      <p class="lead">如果 Happy Read book 给你的阅读带来了一点方便，可以扫码支持作者。每一份支持都会用于后续维护与功能改进。</p>
+    </header>
+
+    <section class="layout">
+      <article class="card qr-card">
+        <div class="qr-frame">
+          <img src="support-qr.jpg" alt="微信支付支持二维码">
+        </div>
+        <p class="qr-tip">使用微信扫一扫识别二维码<br>支持金额可自行选择</p>
+      </article>
+
+      <article class="card tiers">
+        <h2>支持档位</h2>
+        <div class="tier-list">
+          <div class="tier">
+            <span class="price">¥6</span>
+            <span><strong>请作者喝杯咖啡 ☕</strong>一份轻松的小鼓励。</span>
+          </div>
+          <div class="tier featured">
+            <span class="price">¥19</span>
+            <span><strong>支持持续开发</strong>帮助插件继续维护和改进。</span>
+          </div>
+          <div class="tier">
+            <span class="price">¥49</span>
+            <span><strong>感谢长期支持</strong>感谢你对项目的长期认可。</span>
+          </div>
+        </div>
+        <p class="thanks">支持完全自愿，不影响插件功能使用。感谢每一位使用、反馈和支持 Happy Read book 的朋友。</p>
+      </article>
+    </section>
+
+    <footer>© 2026 Happy Read book</footer>
+  </main>
+</body>
+</html>
