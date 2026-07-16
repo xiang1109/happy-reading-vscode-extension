@@ -2,8 +2,8 @@
   "name": "happy-reading-vscode-extension",
   "displayName": "Happy Read book",
   "description": "本地阅读 TXT、EPUB、PDF、MOBI 和 AZW3，支持章节、书签、主题、阅读进度与底部栏阅读。",
-  "version": "2.0.23",
-  "publisher": "happy-read",
+  "version": "2.0.24",
+  "publisher": "HappyRead",
   "homepage": "https://xiang1109.github.io/happy-reading-vscode-extension/",
   "repository": {
     "type": "git",

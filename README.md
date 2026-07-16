@@ -18,7 +18,7 @@ Happy Read book 是一个完全本地运行的小说阅读扩展。
 
 ## 安装
 
-- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=happy-read.happy-reading-vscode-extension)
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=HappyRead.happy-reading-vscode-extension)
 - [GitHub Releases](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest)
 
 从 GitHub Releases 下载 `.vsix` 文件后，在 VS Code 扩展页面右上角选择“从 VSIX 安装”。
