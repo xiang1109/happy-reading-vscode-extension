@@ -14,9 +14,10 @@ export function formatStatusPage(
   cells: number
 ): FormattedStatusPage {
   const safeCells = Math.max(1, Math.floor(cells));
-  // 原生 StatusBarItem 会在可用空间边缘裁切内容。最后固定保留一格
-  // 全角空白，确保最右侧正文字符不会因字体实际宽度差异而消失。
-  const contentCells = Math.max(1, safeCells - 1);
+  // 原生 StatusBarItem 可能压缩尾部空白，因此直接少放两格正文，
+  // 给最右侧字符留下约一个完整汉字宽度的可靠安全边距。
+  const reservedCells = safeCells >= 4 ? 2 : 1;
+  const contentCells = Math.max(1, safeCells - reservedCells);
   const upperBound = Math.max(start, Math.min(maximumEnd, source.length));
   let end = Math.max(0, Math.min(start, source.length));
   const visible: string[] = [];
@@ -40,7 +41,11 @@ export function formatStatusPage(
 }
 
 export function statusCellCount(statusWidth: number): number {
-  return Math.max(4, Math.floor((statusWidth - 80) / 12));
+  // 设置界面使用 0–100 百分比刻度，并线性映射到原生状态栏的
+  // 有效 100–810 宽度范围；每一个档位都会改变有效宽度。
+  const scaleValue = Math.max(0, Math.min(100, statusWidth));
+  const effectiveWidth = 100 + (scaleValue * (810 - 100)) / 100;
+  return Math.max(4, Math.floor((effectiveWidth - 80) / 12));
 }
 
 function toFullWidthCell(character: string): string {

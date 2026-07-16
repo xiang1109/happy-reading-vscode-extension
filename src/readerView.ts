@@ -104,7 +104,7 @@ export class HappyReadingViewProvider implements vscode.WebviewViewProvider {
         <section class="settings-section">
           <h3 class="settings-section-title">底部栏</h3>
           <div class="settings-grid status-settings">
-            <label class="wide">底栏宽度 <input id="status-width" type="range" min="100" max="1000" step="10"><output id="status-width-value"></output></label>
+            <label class="wide">底栏宽度 <input id="status-width" type="range" min="0" max="100" step="1"><output id="status-width-value"></output></label>
           </div>
         </section>
         <div class="settings-footer general-settings">

@@ -294,11 +294,11 @@ export class HappyReadingController implements vscode.Disposable {
   private async promptStatusWidth(): Promise<void> {
     const value = await vscode.window.showInputBox({
       title: '调整底部栏宽度',
-      prompt: '请输入 100 到 1000 之间的宽度',
+      prompt: '请输入 0 到 100 之间的宽度',
       value: String(this.session.statusWidth),
       validateInput: input => {
         const number = Number(input);
-        return Number.isFinite(number) && number >= 100 && number <= 1000 ? undefined : '请输入 100 到 1000 之间的数字';
+        return Number.isFinite(number) && number >= 0 && number <= 100 ? undefined : '请输入 0 到 100 之间的数字';
       }
     });
     if (value !== undefined) {

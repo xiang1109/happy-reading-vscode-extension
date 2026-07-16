@@ -83,14 +83,16 @@ test('formats status text into a fixed number of full-width cells', () => {
   const following = formatStatusPage('ABCDE', full.end, 5, 5);
   assert.equal(Array.from(chinese.text).length, 4);
   assert.equal(Array.from(mixed.text).length, 4);
-  assert.equal(mixed.text, 'Ａ１！　');
-  assert.equal(mixed.end, 3);
+  assert.equal(mixed.text, 'Ａ１　　');
+  assert.equal(mixed.end, 2);
   assert.equal(short.text, `末${'　'.repeat(3)}`);
-  assert.equal(full.text, `ＡＢＣＤ　`);
-  assert.equal(full.end, 4);
-  assert.equal(following.text, `Ｅ${'　'.repeat(4)}`);
+  assert.equal(full.text, `ＡＢＣ　　`);
+  assert.equal(full.end, 3);
+  assert.equal(following.text, `ＤＥ${'　'.repeat(3)}`);
   assert.equal(following.end, 5);
-  assert.equal(statusCellCount(260), 15);
+  assert.equal(statusCellCount(0), 4);
+  assert.equal(statusCellCount(100), 60);
+  assert.ok(statusCellCount(90) < statusCellCount(100));
 });
 
 test('reconstructs chapters from an inline part table of contents', () => {

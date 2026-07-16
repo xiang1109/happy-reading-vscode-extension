@@ -114,7 +114,7 @@
   elements.backgroundColor.addEventListener('change', useCustomColors);
   elements.autoPage.addEventListener('change', () => vscode.postMessage({ type: 'autoPage', enabled: elements.autoPage.checked }));
   elements.statusWidth.addEventListener('input', () => {
-    elements.statusWidthValue.textContent = elements.statusWidth.value;
+    updateStatusWidthControl();
   });
   elements.statusWidth.addEventListener('change', () => vscode.postMessage({ type: 'statusWidth', width: numberValue(elements.statusWidth, 260) }));
   elements.modal.addEventListener('cancel', () => { modalType = ''; hideContextMenus(); });
@@ -228,7 +228,7 @@
     elements.autoPage.checked = state.autoPage;
     elements.totalChars.textContent = String(state.totalChars);
     elements.statusWidth.value = String(state.statusWidth);
-    elements.statusWidthValue.textContent = String(state.statusWidth);
+    updateStatusWidthControl();
     elements.bookmarkButton.title = state.records.length ? `书签 (${state.records.length})` : '书签';
 
     const root = document.documentElement.style;
@@ -378,6 +378,14 @@
     elements.bookContextMenu.classList.add('hidden');
   }
   function numberValue(element, fallback) { const value = Number(element.value); return Number.isFinite(value) ? value : fallback; }
+  function updateStatusWidthControl() {
+    const minimum = numberValue({ value: elements.statusWidth.min }, 0);
+    const maximum = numberValue({ value: elements.statusWidth.max }, 100);
+    const value = numberValue(elements.statusWidth, minimum);
+    const progress = maximum > minimum ? ((value - minimum) / (maximum - minimum)) * 100 : 0;
+    elements.statusWidthValue.textContent = String(value);
+    elements.statusWidth.style.setProperty('--range-progress', `${Math.max(0, Math.min(100, progress))}%`);
+  }
   function ensureSelectOption(select, value) {
     if (!Array.from(select.options).some(option => option.value === value)) {
       const option = document.createElement('option');

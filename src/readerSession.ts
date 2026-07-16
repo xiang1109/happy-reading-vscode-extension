@@ -25,7 +25,8 @@ export class ReaderSession {
   public constructor(private readonly store: ReaderStore, private readonly onChanged: () => void) {
     this.settingsValue = store.settings();
     this.statusBarEnabled = store.get('statusBarEnabled', true);
-    this.statusWidth = clamp(store.get('statusWidth', 260), 100, 1000);
+    const storedStatusWidth = store.get('statusWidth', 260);
+    this.statusWidth = clamp(storedStatusWidth > 100 ? Math.round(storedStatusWidth / 10) : storedStatusWidth, 0, 100);
   }
 
   public get settings(): ReaderSettings { return this.settingsValue; }
@@ -115,7 +116,7 @@ export class ReaderSession {
   }
 
   public async setStatusWidth(width: number): Promise<void> {
-    this.statusWidth = clamp(width, 100, 1000);
+    this.statusWidth = clamp(width, 0, 100);
     await this.store.set('statusWidth', this.statusWidth);
     this.onChanged();
   }
