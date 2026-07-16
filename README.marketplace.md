@@ -1,6 +1,6 @@
 # Happy Read book for VS Code
 
-Happy Read book 是一个完全本地运行的 VS Code 电子书与小说阅读扩展。
+Happy Read book 是一个完全本地运行的小说阅读扩展。
 
 [GitHub 项目](https://github.com/xiang1109/happy-reading-vscode-extension) · [下载安装包](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest) · [问题反馈](https://github.com/xiang1109/happy-reading-vscode-extension/issues)
 
