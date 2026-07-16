@@ -2,7 +2,7 @@
 
 Happy Read book 是一个完全本地运行的 VS Code 电子书与小说阅读扩展。
 
-[支持页面](https://xiang1109.github.io/happy-reading-vscode-extension/) · [下载安装包](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest) · [问题反馈](https://github.com/xiang1109/happy-reading-vscode-extension/issues)
+[GitHub 项目](https://github.com/xiang1109/happy-reading-vscode-extension) · [下载安装包](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest) · [问题反馈](https://github.com/xiang1109/happy-reading-vscode-extension/issues)
 
 ## 功能
 
@@ -18,7 +18,10 @@ Happy Read book 是一个完全本地运行的 VS Code 电子书与小说阅读�
 
 ## 安装
 
-普通用户可以从 [GitHub Releases](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest) 下载 `.vsix` 文件，然后在 VS Code 扩展页面右上角选择“从 VSIX 安装”。
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=xiexiang.happy-reading-vscode-extension)
+- [GitHub Releases](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest)
+
+从 GitHub Releases 下载 `.vsix` 文件后，在 VS Code 扩展页面右上角选择“从 VSIX 安装”。
 
 从源码构建：
 
@@ -26,6 +29,10 @@ Happy Read book 是一个完全本地运行的 VS Code 电子书与小说阅读�
 npm install
 npm run package
 ```
+
+## GitHub
+
+- [xiang1109/happy-reading-vscode-extension](https://github.com/xiang1109/happy-reading-vscode-extension)
 
 ## 支持作者
 
@@ -35,7 +42,7 @@ Happy Read book 免费使用。如果这个小工具给你带来了一点方便�
 - **¥16**：支持持续开发
 - **任意金额**：随心支持 ❤️
 
-![微信支付支持二维码](docs/support-qr.jpg)
+<img src="docs/support-qr.jpg" alt="微信支付支持二维码" width="220">
 
 支持完全自愿，不解锁额外功能，也不影响插件正常使用。
 
