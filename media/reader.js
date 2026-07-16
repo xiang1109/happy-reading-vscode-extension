@@ -119,6 +119,7 @@
   elements.statusWidth.addEventListener('change', () => vscode.postMessage({ type: 'statusWidth', width: numberValue(elements.statusWidth, 260) }));
   elements.modal.addEventListener('cancel', () => { modalType = ''; hideContextMenus(); });
   elements.modal.addEventListener('close', () => { modalType = ''; hideContextMenus(); });
+  window.addEventListener('resize', applyStoredToolbarHeight);
   elements.toolbarResizer.addEventListener('pointerdown', event => {
     event.preventDefault();
     if (settingsVisible && !readingMode) return;
@@ -161,7 +162,11 @@
         renderLayout();
         break;
       case 'exitReadingMode': readingMode = false; renderLayout(); break;
-      case 'toggleSettings': settingsVisible = !settingsVisible; renderLayout(); break;
+      case 'toggleSettings':
+        settingsVisible = !settingsVisible;
+        if (settingsVisible) elements.settings.scrollTop = 0;
+        renderLayout();
+        break;
       case 'books': openModal('books'); break;
       case 'chapters': openModal('chapters'); break;
       case 'bookmarks': openModal('bookmarks'); break;
@@ -389,8 +394,10 @@
   }
   function applyStoredToolbarHeight() {
     if (settingsVisible && !readingMode) {
-      elements.toolbar.style.height = 'auto';
-      elements.toolbar.style.overflow = 'visible';
+      const available = Math.max(120, window.innerHeight - 24);
+      const height = Math.min(available, Math.max(150, Math.round(window.innerHeight * 0.72)));
+      elements.toolbar.style.height = `${height}px`;
+      elements.toolbar.style.overflow = 'hidden';
       return;
     }
     const height = readingMode ? webviewState.readingModeHeight : webviewState.toolbarHeight;

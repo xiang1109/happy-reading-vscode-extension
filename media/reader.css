@@ -22,11 +22,11 @@ body {
 }
 
 #app { display: flex; flex-direction: column; padding: 8px; gap: 5px; }
-#toolbar { flex: 0 0 auto; }
+#toolbar { flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
 #toolbar-resizer { position: relative; flex: 0 0 14px; margin: 0; cursor: row-resize; background: transparent; touch-action: none; }
 #toolbar-resizer::before { content: ""; position: absolute; left: 50%; top: 5px; width: 46px; height: 3px; border-radius: 2px; background: var(--vscode-widget-border, #555); transform: translateX(-50%); }
 #toolbar-resizer:hover::before { background: var(--vscode-focusBorder); }
-.toolbar-row { display: flex; align-items: center; gap: 5px; min-height: 30px; flex-wrap: wrap; }
+.toolbar-row { display: flex; flex: 0 0 auto; align-items: center; gap: 5px; min-height: 30px; flex-wrap: wrap; }
 .primary-row { margin-bottom: 4px; }
 
 button, input, select {
@@ -65,8 +65,8 @@ input[type="checkbox"] { min-height: auto; }
 #exit-reading-mode { display: none; width: 22px; min-width: 22px; height: 22px; min-height: 22px; padding: 4px; }
 #exit-reading-mode .icon { width: 13px; height: 13px; }
 .reading-mode-navigation { display: none; }
-.settings-panel { display: none; border-top: 1px solid var(--vscode-widget-border); margin-top: 5px; padding: 10px 2px 2px; }
-.settings-panel.visible { display: block; }
+.settings-panel { display: none; border-top: 1px solid var(--vscode-widget-border); margin-top: 5px; padding: 10px 6px 8px 2px; }
+.settings-panel.visible { display: block; flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
 .settings-section + .settings-section { margin-top: 14px; }
 .settings-section-title { margin: 0 0 9px; padding-bottom: 5px; border-bottom: 1px solid var(--vscode-widget-border); font-size: 13px; }
 .settings-grid { display: grid; grid-template-columns: repeat(2, minmax(110px, 1fr)); gap: 6px 8px; margin-bottom: 7px; }
