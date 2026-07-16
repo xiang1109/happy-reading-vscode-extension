@@ -14,11 +14,14 @@ export function formatStatusPage(
   cells: number
 ): FormattedStatusPage {
   const safeCells = Math.max(1, Math.floor(cells));
+  // 原生 StatusBarItem 会在可用空间边缘裁切内容。最后固定保留一格
+  // 全角空白，确保最右侧正文字符不会因字体实际宽度差异而消失。
+  const contentCells = Math.max(1, safeCells - 1);
   const upperBound = Math.max(start, Math.min(maximumEnd, source.length));
   let end = Math.max(0, Math.min(start, source.length));
   const visible: string[] = [];
 
-  while (end < upperBound && visible.length < safeCells) {
+  while (end < upperBound && visible.length < contentCells) {
     const codePoint = source.codePointAt(end);
     if (codePoint === undefined) {
       break;

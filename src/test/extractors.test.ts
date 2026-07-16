@@ -79,10 +79,17 @@ test('formats status text into a fixed number of full-width cells', () => {
   const chinese = formatStatusPage('中文测试', 0, 4, 4);
   const mixed = formatStatusPage('A1!?', 0, 4, 4);
   const short = formatStatusPage('末', 0, 1, 4);
+  const full = formatStatusPage('ABCDE', 0, 5, 5);
+  const following = formatStatusPage('ABCDE', full.end, 5, 5);
   assert.equal(Array.from(chinese.text).length, 4);
   assert.equal(Array.from(mixed.text).length, 4);
-  assert.equal(mixed.text, 'Ａ１！？');
+  assert.equal(mixed.text, 'Ａ１！　');
+  assert.equal(mixed.end, 3);
   assert.equal(short.text, `末${'　'.repeat(3)}`);
+  assert.equal(full.text, `ＡＢＣＤ　`);
+  assert.equal(full.end, 4);
+  assert.equal(following.text, `Ｅ${'　'.repeat(4)}`);
+  assert.equal(following.end, 5);
   assert.equal(statusCellCount(260), 15);
 });
 
