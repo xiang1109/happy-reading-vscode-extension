@@ -2,7 +2,7 @@
   "name": "happy-reading-vscode-extension",
   "displayName": "Happy Read book",
   "description": "在 VS Code 中本地阅读 TXT、EPUB、PDF、MOBI 和 AZW3，支持章节、书签、主题、阅读进度与底部栏阅读。",
-  "version": "2.0.20",
+  "version": "2.0.21",
   "publisher": "xiexiang",
   "homepage": "https://xiang1109.github.io/happy-reading-vscode-extension/",
   "repository": {
@@ -166,7 +166,7 @@
     "watch": "tsc -watch -p ./",
     "test": "npm run compile && node --test out/test/*.test.js",
     "check": "npm run test",
-    "package": "npm run check && npm run bundle && vsce package --no-dependencies --allow-missing-repository"
+    "package": "npm run check && npm run bundle && vsce package --no-dependencies --allow-missing-repository --readme-path README.marketplace.md"
   },
   "dependencies": {
     "adm-zip": "^0.5.16",

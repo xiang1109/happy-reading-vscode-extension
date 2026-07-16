@@ -9,3 +9,4 @@ package-lock.json
 *.vsix
 *.zip
 docs/**
+README.md
