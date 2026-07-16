@@ -1,0 +1,185 @@
+{
+  "name": "happy-reading-vscode-extension",
+  "displayName": "Happy Read book",
+  "description": "在 VS Code 中本地阅读 TXT、EPUB、PDF、MOBI 和 AZW3，支持章节、书签、主题、阅读进度与底部栏阅读。",
+  "version": "2.0.17",
+  "publisher": "xiexiang",
+  "homepage": "https://xiang1109.github.io/happy-reading-vscode-extension/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiang1109/happy-reading-vscode-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xiang1109/happy-reading-vscode-extension/issues"
+  },
+  "license": "SEE LICENSE IN HAPPY_READ_BOOK_EULA.md",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "reader",
+    "novel",
+    "ebook",
+    "txt",
+    "epub",
+    "pdf",
+    "mobi",
+    "azw3"
+  ],
+  "activationEvents": [
+    "onView:happyReading.reader",
+    "onCommand:happyReading.open",
+    "onCommand:happyReading.previous",
+    "onCommand:happyReading.next"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "happyReading",
+          "title": "Happy Read book",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "happyReading": [
+        {
+          "type": "webview",
+          "id": "happyReading.reader",
+          "name": "Happy Read book"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "happyReading.open",
+        "title": "Happy Read book: 打开书籍或书库",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "happyReading.openView",
+        "title": "Happy Read book: 打开阅读区"
+      },
+      {
+        "command": "happyReading.previous",
+        "title": "Happy Read book: 上一页"
+      },
+      {
+        "command": "happyReading.next",
+        "title": "Happy Read book: 下一页"
+      },
+      {
+        "command": "happyReading.hideStatus",
+        "title": "Happy Read book: 隐藏底部栏"
+      },
+      {
+        "command": "happyReading.showStatus",
+        "title": "Happy Read book: 显示底部栏"
+      },
+      {
+        "command": "happyReading.statusWidth",
+        "title": "Happy Read book: 调整底部栏宽度"
+      },
+      {
+        "command": "happyReading.usePanel",
+        "title": "Happy Read book: 切换到阅读区"
+      },
+      {
+        "command": "happyReading.useStatusBar",
+        "title": "Happy Read book: 切换到底部栏"
+      },
+      {
+        "command": "happyReading.settings",
+        "title": "Happy Read book: 阅读设置"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "happyReading.open",
+          "when": "view == happyReading.reader",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "happyReading.previous",
+        "key": "alt+left"
+      },
+      {
+        "command": "happyReading.next",
+        "key": "alt+right"
+      },
+      {
+        "command": "happyReading.hideStatus",
+        "key": "alt+up"
+      },
+      {
+        "command": "happyReading.showStatus",
+        "key": "alt+down"
+      }
+    ],
+    "configuration": {
+      "title": "Happy Read book",
+      "properties": {
+        "happyReading.pageLines": {
+          "type": "number",
+          "default": 6,
+          "minimum": 1,
+          "maximum": 30,
+          "description": "阅读区每页行数。"
+        },
+        "happyReading.charsPerLine": {
+          "type": "number",
+          "default": 28,
+          "minimum": 8,
+          "maximum": 200,
+          "description": "阅读区每行字数。"
+        },
+        "happyReading.location": {
+          "type": "string",
+          "enum": [
+            "panel",
+            "statusBar"
+          ],
+          "enumDescriptions": [
+            "在 Happy Read book 阅读区显示正文。",
+            "在 VS Code 底部状态栏显示正文。"
+          ],
+          "default": "panel",
+          "description": "正文显示位置。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "bundle": "esbuild src/extension.ts --bundle --platform=node --target=node20 --external:vscode --outfile=dist/extension.js --sourcemap",
+    "build": "npm run compile && npm run bundle",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test out/test/*.test.js",
+    "check": "npm run test",
+    "package": "npm run check && npm run bundle && vsce package --no-dependencies --allow-missing-repository"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "cheerio": "1.0.0",
+    "iconv-lite": "^0.6.3",
+    "pdf-parse": "1.1.1"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^20.19.9",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.6.2",
+    "esbuild": "^0.25.8",
+    "typescript": "^5.9.2"
+  }
+}

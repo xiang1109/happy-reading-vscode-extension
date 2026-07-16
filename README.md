@@ -1,20 +1,44 @@
-# Happy Read book 支持主页
+# Happy Read book for VS Code
 
-Happy Read book 是一个免费、本地运行的 VS Code 阅读工具。
+Happy Read book 是一个完全本地运行的 VS Code 电子书与小说阅读扩展。
 
-如果这个小工具给你带来了一点方便，可以自愿支持作者继续维护和改进。
+[支持页面](https://xiang1109.github.io/happy-reading-vscode-extension/) · [下载安装包](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest) · [问题反馈](https://github.com/xiang1109/happy-reading-vscode-extension/issues)
 
-## 支持档位
+## 功能
+
+- 支持 TXT、EPUB、PDF、MOBI、AZW3
+- VS Code 底部状态栏隐藏阅读，可手动调节底部栏宽度
+- 快捷键切换下一页、退出阅读
+- 自动展示中文与英文章节列表并点击跳转
+- 最近小说列表和滚动章节目录
+- 保存最近打开的小说、当前文件和阅读进度
+- 纸书、暗夜、水墨、自定义主题，支持字体、字号、前景色和背景色
+- 鼠标静止自动翻页与沉浸阅读模式
+- 选中文字后右键保存书签；书签支持复制、删除、双击跳转
+
+## 安装
+
+普通用户可以从 [GitHub Releases](https://github.com/xiang1109/happy-reading-vscode-extension/releases/latest) 下载 `.vsix` 文件，然后在 VS Code 扩展页面右上角选择“从 VSIX 安装”。
+
+从源码构建：
+
+```bash
+npm install
+npm run package
+```
+
+## 支持作者
+
+Happy Read book 免费使用。如果这个小工具给你带来了一点方便，可以自愿支持后续维护：
 
 - **¥6**：请作者喝杯咖啡 ☕
-- **¥19**：支持持续开发
-- **¥49**：感谢长期支持
+- **¥16**：支持持续开发
 - **任意金额**：随心支持 ❤️
 
-## 微信支持
+![微信支付支持二维码](docs/support-qr.jpg)
 
-![微信支付支持二维码](support-qr.jpg)
+支持完全自愿，不解锁额外功能，也不影响插件正常使用。
 
-支持完全自愿，不解锁额外功能，也不影响插件正常使用。本工具仅用于读取用户自己的本地文件，不提供任何小说资源。
+## 隐私
 
-完整支持页面：[https://xiang1109.github.io/happy-reading-vscode-extension/](https://xiang1109.github.io/happy-reading-vscode-extension/)
+本插件仅用于读取用户自己的本地文件，不提供任何小说资源。小说内容、书签和阅读进度均保存在本地，不会上传。
